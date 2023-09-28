@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import com.lighthouse.sendbird_demo.channel.CustomChannelActivity
 import com.sendbird.android.channel.GroupChannel
 import com.sendbird.uikit.activities.ChannelActivity
 import com.sendbird.uikit.activities.CreateChannelActivity
@@ -34,8 +35,9 @@ class CustomChannelList : ChannelListFragment() {
                 if (e != null) {
                     Toast.makeText(context, e.toString(), Toast.LENGTH_SHORT).show()
                 } else {
-                    val intent = ChannelActivity.newIntent(
+                    val intent = ChannelActivity.newIntentFromCustomActivity(
                         requireContext(),
+                        CustomChannelActivity::class.java,
                         channel.url
                     )
                     startActivity(intent)
